@@ -15,7 +15,6 @@ public class Domanda {
 		risposte[1]=r1;
 		risposte[2]=r2;
 		risposte[3]=r3;
-		System.out.println(ris);
 		switch (ris.trim()) {
 		case "a": 
 		case "A": risposta=0; break;
@@ -42,7 +41,18 @@ public boolean checkRisposta(int c) {
 	return c==risposta;
 }
 
+public String[] getRisposte() { 
+	return risposte;
+}
+
 public String getRisposta() {
 	return risposte[risposta];
+}
+public String getDomanda() {
+	return domanda;
+}
+
+public int getID() {
+	return id;
 }
 }
