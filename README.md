@@ -1,0 +1,2 @@
+# LPICSimulator
+SImulatore per LPIC
