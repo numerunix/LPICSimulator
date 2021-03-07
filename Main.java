@@ -1,15 +1,27 @@
 package org.numerone.altervista.lpicsimulator;
 import java.util.Scanner;
+
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 public class Main {
 	     public static void main(String[] args) {
-	 	 /*  	Scanner s=new Scanner (System.in);       
-	 	 
-	        System.out.print(d.toString());
-	        int ris=s.nextInt();
-	        if (d.checkRisposta(ris))
-	          System.out.println("La risposta è corretta");
-	        else 
-	          System.out.println("La risposta "+ris+" è sbagliata. La risposta corretta era la "+d.getRisposta());*/
+	 	  try {
+            // Set cross-platform Java L&F (also called "Metal")
+        UIManager.setLookAndFeel(
+            UIManager.getCrossPlatformLookAndFeelClassName());
+    } 
+    catch (UnsupportedLookAndFeelException e) {
+       // handle exception
+    }
+    catch (ClassNotFoundException e) {
+       // handle exception
+    }
+    catch (InstantiationException e) {
+       // handle exception
+    }
+    catch (IllegalAccessException e) {
+       // handle exception
+    }
 	    	 LPICFrame f=new LPICFrame();
 	    	 f.setVisible(true);
 	}

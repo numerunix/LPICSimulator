@@ -6,6 +6,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -19,7 +21,7 @@ import javax.swing.JRadioButton;
 public class LPICFrame extends JFrame implements ActionListener {
 
 	/**
-	 * "/home/numerone/LPI1.odb"
+	 * 
 	 */
 	private static final long serialVersionUID = 295490139477179212L;
 	private JLabel numeroDomanda, domanda;
@@ -42,7 +44,16 @@ public class LPICFrame extends JFrame implements ActionListener {
 		p.add(new JLabel("Numero della domanda: "), c);
 		c.gridx=1;
 		numeroDomanda=new JLabel(""+d.getID());
-			
+		addWindowListener(new WindowAdapter()
+		{
+		    @Override
+		    public void windowClosing(WindowEvent e)
+		    {
+		        super.windowClosing(e);
+		        // Do your disconnect from the DB here.
+		        dao.exit();
+		    }
+		});
 		p.add(numeroDomanda, c);
 		c.gridx=0;
 		c.gridwidth=2;
@@ -93,9 +104,9 @@ public class LPICFrame extends JFrame implements ActionListener {
 		if (risposta==-1)
 			return;
 		if (d.checkRisposta(risposta))
-			JOptionPane.showMessageDialog(this, "Hai indovinato");
+			JOptionPane.showMessageDialog(this, "Hai indovinato", "Hai Indovinato", JOptionPane.INFORMATION_MESSAGE);
 		else
-			JOptionPane.showMessageDialog(this, "Mi spiace, la risposta corretta era "+d.getRisposta());
+			JOptionPane.showMessageDialog(this,  "Mi spiace, la risposta corretta era "+d.getRisposta(), "Errore", JOptionPane.ERROR_MESSAGE);
 		d=dao.getDomanda();
 		numeroDomanda.setText(""+d.getID());
 		domanda.setText(d.getDomanda());

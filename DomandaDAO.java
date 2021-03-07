@@ -14,6 +14,7 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Vector;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -34,6 +35,8 @@ public class DomandaDAO {
     List v; //Stores list of unzipped file for deletion at end of program
 	Random r;
 	String Tabella;
+	int max;
+	Vector<Boolean> usciti;
 	public DomandaDAO(String path, String tabella) {
 		v	= new ArrayList();
 	
@@ -105,6 +108,12 @@ public class DomandaDAO {
       		   System.out.println("E: esci");*/
       	   r=new Random();
       	   Tabella=tabella;
+      	   char temp=tabella.charAt(tabella.length() - 1);
+      	   switch (temp) {
+      	   case '1': max=88; break;
+      	   case '2': max=89; break;
+      	   }
+      		 
     }         
     catch (Exception e)
     {
@@ -114,7 +123,7 @@ public class DomandaDAO {
 	
 	Domanda getDomanda() {
 		Domanda d=null;
-		int i=(Math.abs((r.nextInt()))%88)+1;  
+		int i=(Math.abs((r.nextInt()))%max)+1;
 		try {
 			rec = com.executeQuery("SELECT \"Domande\".\"Domanda\", \"Risposte\".\"AffermazioneA\", \"Risposte\".\"AffermazioneB\", \"Risposte\".\"AffermazioneC\", \"Risposte\".\"AffermazioneD\", \"Risposte\".\"Risposta\" FROM \""+Tabella+"\" LEFT JOIN \"Domande\" ON ( \""+Tabella+"\".\"ID_DOMANDA\" = \"Domande\".\"ID\" ) LEFT JOIN \"Risposte\" ON ( \""+Tabella+"\".\"ID_RISPOSTE\" = \"Risposte\".\"ID\" ) WHERE ID = "+i);
 		    rec.next();
@@ -141,5 +150,6 @@ public class DomandaDAO {
     (new File((String)v.get(len))).delete();
 
 	}
+	
 }
     

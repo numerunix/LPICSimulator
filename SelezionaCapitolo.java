@@ -32,10 +32,10 @@ public class SelezionaCapitolo extends JDialog implements ActionListener {
 			c.gridx=0;
 			c.gridy=0;
 			jcb=new JComboBox<String>();
-			jcb.addItem("101");
-			jcb.addItem("102");
-			jcb.addItem("103");
-			jcb.addItem("104");
+			jcb.addItem("101 - System Architecture");
+			jcb.addItem("102 - Linux Installation and package management");
+			jcb.addItem("103 - GNU and UNIX commands");
+			jcb.addItem("104 - Devices, Linux FIlesystems, FIlesystem Hierarchy Standard");
 			p.add(new JLabel("Su quale capitolo ti vuoi allenare?"), c);
 			c.gridy=1;
 			p.add(jcb);
