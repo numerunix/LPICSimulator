@@ -115,6 +115,16 @@ public class LPICFrame extends JFrame implements ActionListener {
 			sbagliate++;
 		}
 		d=dao.getDomanda();
+	  	if (d==null) {
+	  		String str="Hai completato le domande di questa sessione.\nNe hai indovinate "+corrette+".\nNe hai sbagliate "+sbagliate+".\n";
+	  		if (corrette>sbagliate)
+	  			str=str+"Che ne diresti di provare il livello successivo?";
+  			else
+  				str=str+"Che ne diresti di riprovarci?";
+	  		JOptionPane.showMessageDialog(this, str, "Gioco finito", JOptionPane.INFORMATION_MESSAGE);
+	  		System.exit(0);
+	  	}
+
 		numeroDomanda.setText(""+d.getID());
 		domanda.setText(d.getDomanda());
 		int i;

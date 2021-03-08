@@ -21,28 +21,28 @@ import java.util.zip.ZipFile;
 import org.hsqldb.jdbcDriver;
 
 public class DomandaDAO {
-    jdbcDriver j = new jdbcDriver(); //Instantiate the jdbcDriver from HSQL
-    Connection con = null; //Database objects
-    Statement com = null;
-    ResultSet rec = null;
-    ZipFile file = null; //For handeling zip files
-    ZipEntry ent = null;
-    Enumeration en = null; //For the entries in the zip file
-    BufferedOutputStream out = null; //For the output from the zip class
-    InputStream in = null; //for reading buffers from the zip file
-    File f = null; //Used to get a temporary file name, not actually used for anything
-    int len; //General length counter for loops
-    List v; //Stores list of unzipped file for deletion at end of program
-	Random r;
-	String Tabella;
-	int max;
-	Vector<Boolean> usciti;
+    private jdbcDriver j = new jdbcDriver(); //Instantiate the jdbcDriver from HSQL
+    private Connection con = null; //Database objects
+    private Statement com = null;
+    private ResultSet rec = null;
+    private ZipFile file = null; //For handeling zip files
+    private ZipEntry ent = null;
+    private Enumeration en = null; //For the entries in the zip file
+    private BufferedOutputStream out = null; //For the output from the zip class
+    private InputStream in = null; //for reading buffers from the zip file
+    private File f = null; //Used to get a temporary file name, not actually used for anything
+    private  int len; //General length counter for loops
+    private List v; //Stores list of unzipped file for deletion at end of program
+    private Random r;
+	private String Tabella;
+	private int max;
+    private boolean uscito[];
+	int k;
 	public DomandaDAO(String path, String tabella) {
 		v	= new ArrayList();
 	
     //Unzip zip file, via info from
     //http://www.devx.com/getHelpOn/10MinuteSolution/20447
-    
     try
     {
          //Open the zip file that holds the OO.Org Base file
@@ -114,17 +114,30 @@ public class DomandaDAO {
       	   case '2': max=89; break;
       	   case '3': max=88; break;
       	   }
+      	   k=1;
       		 
     }         
     catch (Exception e)
     {
          e.printStackTrace();
     }
+    uscito=new boolean[100];
+   for (int i=0; i<100; i++)
+	   uscito[i]=false;
 }
 	
 	Domanda getDomanda() {
 		Domanda d=null;
 		int i=(Math.abs((r.nextInt()))%max)+1;
+		int j=i-1;
+		while (uscito[i]==true && i!=j) {
+			i++;
+			if (i>max)
+				i=1;
+		}
+		if (uscito[i])
+			return null;
+		uscito[i]=true;
 		try {
 			rec = com.executeQuery("SELECT \"Domande\".\"Domanda\", \"Risposte\".\"AffermazioneA\", \"Risposte\".\"AffermazioneB\", \"Risposte\".\"AffermazioneC\", \"Risposte\".\"AffermazioneD\", \"Risposte\".\"Risposta\" FROM \""+Tabella+"\" LEFT JOIN \"Domande\" ON ( \""+Tabella+"\".\"ID_DOMANDA\" = \"Domande\".\"ID\" ) LEFT JOIN \"Risposte\" ON ( \""+Tabella+"\".\"ID_RISPOSTE\" = \"Risposte\".\"ID\" ) WHERE ID = "+i);
 		    rec.next();
