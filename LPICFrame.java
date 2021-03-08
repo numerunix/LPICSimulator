@@ -74,6 +74,7 @@ public class LPICFrame extends JFrame implements ActionListener {
 		final String messaggio;
 		c.gridy++;
 		c.gridwidth=1;
+		c.gridx=1;
 		JButton Ok=new JButton("OK");
 		Ok.addActionListener(this);
 		JButton Esci=new JButton("Esci");
@@ -86,7 +87,7 @@ public class LPICFrame extends JFrame implements ActionListener {
 				System.exit(0);
 			}});
 		p.add(Ok,c);
-		c.gridx=1;
+		c.gridx=0;
 		p.add(Esci, c);
  	   	add(p);
 		setSize(400,400);
