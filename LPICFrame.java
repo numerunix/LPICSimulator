@@ -29,6 +29,7 @@ public class LPICFrame extends JFrame implements ActionListener {
 	private DomandaDAO dao;
 	private Domanda d;
 	private String[] risposte;
+	int corrette, sbagliate;
 	public LPICFrame()  {
 		super("LPICSimulator 0.1");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -81,6 +82,7 @@ public class LPICFrame extends JFrame implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				JOptionPane.showMessageDialog(null, "Ne hai indovinate " + corrette + ".\nNe hai sbagliate "+sbagliate , "Fine partita", JOptionPane.INFORMATION_MESSAGE);
 				System.exit(0);
 			}});
 		p.add(Ok,c);
@@ -89,6 +91,8 @@ public class LPICFrame extends JFrame implements ActionListener {
  	   	add(p);
 		setSize(400,400);
  	   	pack();
+ 	   	corrette=0;
+ 	   	sbagliate=0;
 	}
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -103,10 +107,13 @@ public class LPICFrame extends JFrame implements ActionListener {
 			risposta=3;
 		if (risposta==-1)
 			return;
-		if (d.checkRisposta(risposta))
+		if (d.checkRisposta(risposta)) {
 			JOptionPane.showMessageDialog(this, "Hai indovinato", "Hai Indovinato", JOptionPane.INFORMATION_MESSAGE);
-		else
+			corrette++;
+		} else {
 			JOptionPane.showMessageDialog(this,  "Mi spiace, la risposta corretta era "+d.getRisposta(), "Errore", JOptionPane.ERROR_MESSAGE);
+			sbagliate++;
+		}
 		d=dao.getDomanda();
 		numeroDomanda.setText(""+d.getID());
 		domanda.setText(d.getDomanda());

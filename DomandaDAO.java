@@ -112,6 +112,7 @@ public class DomandaDAO {
       	   switch (temp) {
       	   case '1': max=88; break;
       	   case '2': max=89; break;
+      	   case '3': max=88; break;
       	   }
       		 
     }         
