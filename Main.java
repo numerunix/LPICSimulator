@@ -1,4 +1,4 @@
-//Autore Giulio Sorrentino <gsorre84@gmail.com>
+//Autore del prodotto Giulio Sorrentino <gsorre84@gmail.com>
 package org.numerone.altervista.lpicsimulator;
 import java.util.Scanner;
 
