@@ -6,7 +6,7 @@ SIccome la query SELECT MAX(ID) FROM TABELLA non viene riconosciuta, il numero d
 
 IL simulatore sceglie una domanda e la fa, poi ne sceglie un'altra diversa e poi un'altra ancora fino a quando o non si decide di uscire o si finisicono le domande.
 
-Per questione di copyright NON POSSO pubblicare il mio database con le domande per la LPIC liv 1, ad ogni modo pubblico un database già formatato da riempire.
+Per questione di copyright NON POSSO pubblicare il mio database con le domande per la LPIC liv 1, ad ogni modo pubblico un database già formattato da riempire.
 
 Haoppy Hacking :)
 
