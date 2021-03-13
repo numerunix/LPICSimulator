@@ -58,10 +58,6 @@ public class SelezionaCapitolo extends JDialog implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			int i=jcb.getSelectedIndex();
-			if (i>2)
-				JOptionPane.showMessageDialog(this, "In costruzione");
-			else
 				setVisible(false);
 			
 		}
