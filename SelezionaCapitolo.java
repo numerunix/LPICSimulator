@@ -36,6 +36,7 @@ public class SelezionaCapitolo extends JDialog implements ActionListener {
 			jcb.addItem("102 - Linux Installation and package management");
 			jcb.addItem("103 - GNU and UNIX commands");
 			jcb.addItem("104 - Devices, Linux FIlesystems, FIlesystem Hierarchy Standard");
+			jcb.addItem("Prova intercorso");
 			p.add(new JLabel("Su quale capitolo ti vuoi allenare?"), c);
 			c.gridy=1;
 			p.add(jcb);
@@ -50,6 +51,17 @@ public class SelezionaCapitolo extends JDialog implements ActionListener {
 			c.gridy=2;
 			c.gridx=0;
 			p.add(OK, c);
+			c.gridy=3;
+			c.gridx=0;
+			c.gridwidth=2;
+			p.add(new JLabel("Di Giulio Sorrentino <gsorre84@gmail.com> Copyright 2021."),c);
+			c.gridy=4;
+			p.add(new JLabel("Concesso sotto licenza GPL v3 o, secondo la tua opinione, qualsiasi versione successiva."), c);
+			c.gridy=5;
+			p.add(new JLabel("Dedicato a quella bella vocina che in data 13/3/2021 ha preso il mio ordinativo al Birdy's Bakery a chiaia via telefono."),c);
+			c.gridy=6;
+			p.add(new JLabel("Se il software ti piace considera una donazione via paypal."), c);
+			c.gridy=6;
 			add(p);
 			setSize(400,400);
 			pack();

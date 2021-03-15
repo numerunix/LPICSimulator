@@ -114,6 +114,7 @@ public class DomandaDAO {
       	   case '2': max=89; break;
       	   case '3': max=88; break;
       	   case '4': max=89; break;
+      	   case '5': max=50; break;
       	   }
       	   k=1;
       		 
