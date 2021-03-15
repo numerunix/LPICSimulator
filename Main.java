@@ -1,3 +1,4 @@
+//Autore: Giulio Sorrentino
 package org.numerone.altervista.lpicsimulator;
 import java.util.Scanner;
 
